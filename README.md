@@ -8,3 +8,5 @@
 4. DP
 5. DFS / BFS
 6. 기타
+
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=surplus10)](https://solved.ac/surplus10/)
