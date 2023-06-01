@@ -73,10 +73,11 @@ NextJS, TypeScript, Recoil, SCSS
 
 깃허브 : https://github.com/adopt-pet-project/Front-End/tree/develop
 
-설명 : 게시글, 분양글, 전반적인 레이아웃, 로그인, 회원가입, 채팅을 담당했습니다.  
+설명 : 게시글, 분양글, 전반적인 레이아웃, 로그인, 회원가입, 채팅, 쪽지를 담당했습니다.  
 모바일을 염두로 UI를 구성했습니다.  
 카카오 지도 API를 사용했습니다.  
-뿐만 아니라 EC2와 PM2로 배포하며 S3, CodeDeploy로 배포 CI/CD 환경 또한 구축했습니다.
+뿐만 아니라 EC2와 PM2로 배포하며 S3, CodeDeploy로 배포 CI/CD 환경 또한 구축했습니다.  
+노션과 GIT을 통해 협업했습니다.
 
 ## 화면
 
