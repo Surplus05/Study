@@ -73,6 +73,8 @@ NextJS, TypeScript, Recoil, SCSS
 
 깃허브 : https://github.com/adopt-pet-project/Front-End/tree/develop
 
+링크 : https://pet-hub.site/
+
 설명 : 게시글, 분양글, 전반적인 레이아웃, 로그인, 회원가입, 채팅, 쪽지를 담당했습니다.  
 모바일을 염두로 UI를 구성했습니다.  
 카카오 지도 API를 사용했습니다.  
