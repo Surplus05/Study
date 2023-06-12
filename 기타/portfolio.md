@@ -12,7 +12,7 @@
 코인 검색시 InterSection Observer를 통해 무한 스크롤을 구현했습니다.  
 차트는 직접 그렸습니다.  
 로그인은 Firebase 를 통해 구현했습니다.  
-(현재 API 연결이 끊어짐)
+(현재 API 연결이 끊어져 로그인 불가능)
 
 ## 화면
 
@@ -33,7 +33,6 @@ React TypeScript Redux Redux-toolkit Styled-Components
 마우스로 드래그가 가능합니다.  
 썸네일에 마우스를 일정시간 올리고 있거나, 클릭시 바로 동영상 시청이 가능합니다.
 같이보기 기능에서 채팅은 실시간이 아니지만 시간에 따라 출력되게 하여 실시간 느낌이 나게 구현했습니다.
-(현재 API 연결이 끊어짐)
 
 ## 화면
 
@@ -44,7 +43,7 @@ React TypeScript Redux Redux-toolkit Styled-Components
 <img src="./image/RT (1).png"  width="960" height="540">
   
   
-## 간단한 게시판
+## 간단한 게시판 (현재 배포중단)
 
 개발기간 : 약 1주
 
