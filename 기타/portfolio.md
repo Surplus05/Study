@@ -6,7 +6,9 @@
 
 개발환경 : React, Redux
 
-깃허브 : https://github.com/Surplus05/coin
+깃허브 : https://github.com/Surplus05/coin  
+
+데모 링크 : https://surplus05.github.io/coin/exchange
 
 설명 : 코인 거래소 페이지를 구현해 봤습니다.  
 코인 검색시 InterSection Observer를 통해 무한 스크롤을 구현했습니다.  
@@ -25,7 +27,9 @@
 개발환경 :  
 React TypeScript Redux Redux-toolkit Styled-Components
 
-깃허브 : https://github.com/Surplus05/react-ts
+깃허브 : https://github.com/Surplus05/react-ts  
+
+데모 링크 : https://surplus05.github.io/react-ts
 
 설명 : TypeScript를 처음 적용했습니다.  
 검색창은 미리보기 기능을 지원하는데, Throttle 방식으로 입력의 변화가 일정시간동안 없어야 네트워크 요청이 이루어집니다.  
