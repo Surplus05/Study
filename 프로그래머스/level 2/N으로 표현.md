@@ -84,4 +84,79 @@ N을 사칙연산 -> 1 추가.
 
 1을 사칙연산 -> 2 추가. 단, 나눗셈 곱셈은 의미 없으므로 제외.
 
+```javascript
+function solution(N, number) {
+  let answer = 0;
+
+  let init = N;
+  let val = 0;
+
+  let dp = new Array(32001).fill(-1);
+
+  let q = [];
+  let front = [];
+
+  while (init <= 32000) {
+    dp[init] = val + 1;
+    q.push(init);
+    init += 10 ** ++val * N;
+
+    if (init == number) return val + 1;
+  }
+
+  while (front != q.length) {
+    let value = q[front++];
+
+    if (
+      value + N <= 32000 &&
+      (dp[value + N] == -1 || dp[value + N] > dp[value] + 1)
+    ) {
+      dp[value + N] = dp[value] + 1;
+      q.push(value + N);
+    }
+
+    if (
+      value - N >= 0 &&
+      (dp[value - N] == -1 || dp[value - N] > dp[value] + 1)
+    ) {
+      dp[value - N] = dp[value] + 1;
+      q.push(value - N);
+    }
+
+    if (
+      value * N <= 32000 &&
+      (dp[value * N] == -1 || dp[value * N] > dp[value] + 1)
+    ) {
+      dp[value * N] = dp[value] + 1;
+      q.push(value * N);
+    }
+
+    if (
+      value % N === 0 &&
+      (dp[value / N] == -1 || dp[value / N] > dp[value] + 1)
+    ) {
+      dp[value / N] = dp[value] + 1;
+      q.push(value / N);
+    }
+
+    if (
+      value + 1 <= 32000 &&
+      (dp[value + 1] == -1 || dp[value + 1] > dp[value] + 2)
+    ) {
+      dp[value + 1] = dp[value] + 2;
+      q.push(value + 1);
+    }
+
+    if (
+      value - 1 >= 0 &&
+      (dp[value - 1] == -1 || dp[value - 1] > dp[value] + 2)
+    ) {
+      dp[value - 1] = dp[value] + 2;
+      q.push(value - N);
+    }
+  }
+  return dp[number] > 8 ? -1 : dp[number];
+}
+```
+
 5, 6, 7, 8 케이스에서 오류가 발생..
