@@ -7,6 +7,7 @@
 3. 그리디
 4. DP
 5. DFS / BFS
-6. 기타
+6. 이진 탐색
+7. 랜덤 실버
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=surplus10)](https://solved.ac/surplus10/)
