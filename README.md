@@ -6,9 +6,8 @@
 2. 재귀 / 백트래킹
 3. 그리디
 4. DP
-5. DFS / BFS
-6. 이진 탐색
-7. 구현
-8. 랜덤 실버
+5. 탐색 (깊이, 너비, 이진)
+6. 구현
+7. 랜덤 실버
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=surplus10)](https://solved.ac/surplus10/)
