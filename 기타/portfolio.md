@@ -97,7 +97,9 @@
 
 개발기간 : 5.8 ~ 6.9
 
-개발 스택 : React, TypeScript, Next.js
+개발 스택 : React, TypeScript, Next.js  
+
+상태 관리 : Recoil  
 
 스타일링 : SCSS
 
