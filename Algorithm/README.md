@@ -8,6 +8,6 @@
 4. DP
 5. 탐색 (깊이, 너비, 이진)
 6. 구현
-7. 랜덤 실버
+7. 랜덤 문제
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=surplus10)](https://solved.ac/surplus10/)

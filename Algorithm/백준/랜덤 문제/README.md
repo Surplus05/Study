@@ -1,6 +1,6 @@
 티어 변경
 
-실 3 ~ 골 5
+실 3 ~ 골 4
 
 티어를 성공인 경우만 보게하고, 알고리즘 분류 반드시 끌것.
 
@@ -8,4 +8,4 @@
 
 SOLVED.AC 검색쿼리
 
-tier:8..11 ~@surplus10 solved:500.. (tag:dp|tag:graph_traversal|tag:bruteforcing|tag:greedy|tag:implementation)
+tier:8..12 ~@surplus10 solved:500.. (tag:dp|tag:graph_traversal|tag:bruteforcing|tag:greedy|tag:implementation)
