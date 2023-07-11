@@ -158,57 +158,57 @@ callback은 하나만 전달이 가능하지만, then 을 여러번 호출하면
 
   Promise 객체를 반환하는 delay 함수를 만들었다.
 
-  ## Promise Chaining
+## Promise Chaining
 
-  비동기 처리를 체인 형태로 다룬다고 했다.  
-  아래의 코드를 한번 보자.
+비동기 처리를 체인 형태로 다룬다고 했다.  
+ 아래의 코드를 한번 보자.
 
-  ```typescript
-  new Promise(function (resolve, reject) {
-    setTimeout(() => resolve(1), 1000); // (*)
+```typescript
+new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(1), 1000); // (*)
+})
+  .then(function (result) {
+    alert(result); // 1
+    return result * 2;
   })
-    .then(function (result) {
-      alert(result); // 1
-      return result * 2;
-    })
-    .then(function (result) {
-      alert(result); // 2
-      return result * 2;
-    })
-    .then(function (result) {
-      alert(result); // 4
-      return result * 2;
-    });
-  ```
-
-  1, 2, 4의 순서로 결과가 나타난다.  
-  어떻게 이런 방식으로 동작이 가능할까?
-
-  then 호출의 결과로 Promise객체를 반환하기 때문이다.  
-  다음 코드를 보자.
-
-  ```typescript
-  new Promise(function (resolve, reject) {
-    setTimeout(() => resolve(1), 1000);
+  .then(function (result) {
+    alert(result); // 2
+    return result * 2;
   })
-    .then(function (result) {
-      alert(result); // 1
+  .then(function (result) {
+    alert(result); // 4
+    return result * 2;
+  });
+```
 
-      return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(result * 2), 1000);
-      });
-    })
-    .then(function (result) {
-      alert(result); // 2
+1, 2, 4의 순서로 결과가 나타난다.  
+ 어떻게 이런 방식으로 동작이 가능할까?
 
-      return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(result * 2), 1000);
-      });
-    })
-    .then(function (result) {
-      alert(result); // 4
+then 호출의 결과로 Promise객체를 반환하기 때문이다.  
+ 다음 코드를 보자.
+
+```typescript
+new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(1), 1000);
+})
+  .then(function (result) {
+    alert(result); // 1
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve(result * 2), 1000);
     });
-  ```
+  })
+  .then(function (result) {
+    alert(result); // 2
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve(result * 2), 1000);
+    });
+  })
+  .then(function (result) {
+    alert(result); // 4
+  });
+```
 
 두개의 코드의 다른점은 위 코드는 1초후 1, 2, 4가 전부 바로 반환되는데
 아래 코드는 1, 2, 4 사이에 1초간 딜레이가 생기게 된다.
