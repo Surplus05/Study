@@ -235,7 +235,7 @@ promise.then(f1, f2);
 function f1(result) {
   console.log(result + " in f1");
   return new Promise((resolve, reject) => {
-    setTimeout(() => reject("에러 발생함."), 1000);
+    setTimeout(() => reject(new Error("에러 발생함.")), 1000);
   });
 }
 
@@ -270,11 +270,11 @@ f1에서 반환한 Promise 객체의 reject를 f2가 catch 해 처리해 준 것
 
 ```typescript
 let promise1 = new Promise((resolve, reject) => {
-  setTimeout(() => reject("실행 거절됨."), 1000);
+  setTimeout(() => reject(new Error("실행 거절됨.")), 1000);
 }).then(f1, f2);
 
 let promise2 = new Promise((resolve, reject) => {
-  setTimeout(() => reject("실행 거절됨."), 1000);
+  setTimeout(() => reject(new Error("실행 거절됨.")), 1000);
 })
   .then(f1)
   .catch(f2);
@@ -408,7 +408,7 @@ new Promise(function (resolve, reject) {
 ```typescript
 new Promise(function (resolve, reject) {
   setTimeout(() => {
-    reject("에러 발생!");
+    reject(new Error("에러 발생!"));
   }, 1000);
 }).catch(alert);
 ```
