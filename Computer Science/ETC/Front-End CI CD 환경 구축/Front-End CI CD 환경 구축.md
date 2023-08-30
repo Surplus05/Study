@@ -1,18 +1,12 @@
-# Front-End CI/CD 환경 구축
-
-Status: 진행 중
-담당자: 성태 김
-프로젝트: Front - End (https://www.notion.so/Front-End-5e6b4bc3801c4333b17dfc00fd64c740?pvs=21)
-
 # Next JS APP CI/CD 환경 구축
 
 ## 1. EC2 인스턴스 생성, 셋팅
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled.png)
+![Untitled](./Untitled.png)
 
 식별용 태그 확인.
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%201.png)
+![Untitled](./Untitled%201.png)
 
 nvm 을 사용해 nodejs, yarn, pm2 설치
 
@@ -66,21 +60,21 @@ $ sudo service codedeploy-agent status
 
 ## 2. EC2 인스턴스에 IAM 역할 적용
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%202.png)
+![Untitled](./Untitled%202.png)
 
 권한 2개 AWSCodeDeployFullAccess, AmazonS3FullAccess 추가.
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%203.png)
+![Untitled](./Untitled%203.png)
 
 이후 인스턴스 페이지에서 역할 적
 
 ## 3. IAM 사용자 추가
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%204.png)
+![Untitled](./Untitled%204.png)
 
 자동 생성된 암호 사용.
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%205.png)
+![Untitled](./Untitled%205.png)
 
 직접 정책 연결 → AWSCodeDeployFullAccess, AmazonS3FullAccess 추가.
 
@@ -88,17 +82,17 @@ $ sudo service codedeploy-agent status
 
 IAM 사용자 → 보안 자격 증명 → 엑세스 키 만들기
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%206.png)
+![Untitled](./Untitled%206.png)
 
 AWS 외부에서 실행되는 애플리케이션 선택 후 완료. csv 파일로 저장
 
 ## 5. 깃허브에 키 등록
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%207.png)
+![Untitled](./Untitled%207.png)
 
 ## 6. CodeDeploy 용 IAM 역할 추가
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%208.png)
+![Untitled](./Untitled%208.png)
 
 AWSCodeDeployRole 확인
 
@@ -106,11 +100,11 @@ AWSCodeDeployRole 확인
 
 배포그룹 생성시 아까 만들어준 IAM 역할 선택
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%209.png)
+![Untitled](./Untitled%209.png)
 
 환경 구성에서 Amazon EC2 인스턴스 선택하고 EC2 인스턴스 태그 선택
 
-![Untitled](Front-End%20CI%20CD%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%A8%201b33d8c531634a8ea1507d5118b560fc/Untitled%2010.png)
+![Untitled](./Untitled%2010.png)
 
 로드밸런서 따로 설정해주지 않았으므로 체크 해제하고 생성 완료.
 
