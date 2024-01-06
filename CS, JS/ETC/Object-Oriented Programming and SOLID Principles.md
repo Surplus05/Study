@@ -163,7 +163,7 @@ usePost를 더 쪼갤수도 있겠으나, 개인적으로는 더 쪼개는 것�
 
 ```ts
 const useLoginMethod = () => {
-  const [loginMethods, setLoginMethods] = useState({});
+  const [loginMethodList, setLoginMethodList] = useState({});
 
   useEffect(() => {
     const APPLE = useApple();
@@ -172,7 +172,7 @@ const useLoginMethod = () => {
     setLoginMethods({ APPLE, GOOGLE });
   }, []);
 
-  return { loginMethods };
+  return { loginMethodList };
 };
 ```
 
