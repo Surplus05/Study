@@ -42,11 +42,7 @@
 
 큰 범위로는 UI와 로직의 분리 (대표적으로 Container - Presenter) 로 나눌 수 있겠다.
 
-Component : UI
-
-Hooks : Logic
-
-Hooks를 더 세부적으로 분리하면, API나 상태관리 (store) 등으로 더 쪼갤 수 있다.
+로직을 더 세밀하게 분리하면, 서비스별 훅, API, 상태관리 (store) 등으로 나눌 수 있겠다.  
 
 ```ts
 import React, { useState, useEffect } from "react";
