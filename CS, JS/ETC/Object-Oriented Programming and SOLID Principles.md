@@ -36,17 +36,40 @@
 
 ## Single Responsibility Principle
 
-단일 기능을 수행한다는 내용으로 널리 알려져 있고 예제도 class 기반으로 많이 나와있지만 이를 기반으로는 프론트엔드에서 적용되는 예제를 생각해내기 어려웠다.
+좁은 범위로는 단일 기능을 하도록 코드를 작성하는 것으로 볼 수 있고,
+큰 범위로는 UI와 로직의 분리 (대표적으로 Container - Presenter) 로 볼 수 있겠다.
 
-프론트엔드에서는 책임(기능)이라는 것을 어떻게 나눌 수 있을까?
+우선 좁은 범위에서의 SRP를 다뤄 보자.
 
-큰 범위로는 UI와 로직의 분리 (대표적으로 Container - Presenter) 로 나눌 수 있겠다.
+```ts
+function emailClients(clients: Client[]) {
+  clients.forEach((client) => {
+    const clientRecord = database.lookup(client);
+    if (clientRecord.isActive()) {
+      email(client);
+    }
+  });
+}
+```
 
-Component : UI
+메일 전송과 필터링 두 기능을 책임지고 있다.
 
-Hooks : Logic
+```ts
+function emailClients(clients: Client[]) {
+  clients.filter(isActiveClient).forEach(email);
+}
 
-Hooks를 더 세부적으로 분리하면, API나 상태관리 (store) 등으로 더 쪼갤 수 있다.
+function isActiveClient(client: Client) {
+  const clientRecord = database.lookup(client);
+  return clientRecord.isActive();
+}
+```
+
+단일 책임을 갖도록 분리시켰다.
+
+큰 범위에서의 SRP를 다뤄 보자.
+
+UI와 Logic 으로 나눌 수 있고 Logic을 더 세부적으로 분리하면 Hook, API, 상태관리 (store) 등으로 더 쪼갤 수 있다.
 
 ```ts
 import React, { useState, useEffect } from "react";
@@ -159,7 +182,43 @@ usePost를 더 쪼갤수도 있겠으나, 개인적으로는 더 쪼개는 것�
 
 ## Open Close Principle
 
-다음은 개방 폐쇄 원칙을 준수하는 예제다.
+다음은 개방 폐쇄 원칙도 한번 살펴 보자.
+
+```ts
+function getMutipledArray(array, option) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (option === "doubled") {
+      result[i] = array[i] * 2;
+    }
+    if (option === "tripled") {
+      result[i] = array[i] * 3;
+    }
+    if (option === "half") {
+      result[i] = array[i] / 2;
+    }
+  }
+  return result;
+}
+```
+
+분기 처리가 가능하지만, 수정이 발생한다.
+
+```ts
+function map(array, fn) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    result[i] = fn(array[i], i, array);
+  }
+  return result;
+}
+
+const getDoubledArray = (array) => map(array, (x) => x * 2);
+const getTripledArray = (array) => map(array, (x) => x * 3);
+const getHalfArray = (array) => map(array, (x) => x / 2);
+```
+
+map의 변화 없이 추가가 가능해 졌다.
 
 ```ts
 const useLoginMethod = () => {
@@ -193,10 +252,42 @@ const Login = () => {
 
 ## Liskov Substitution Principle
 
-클래스의 상속과 다형성을 활용하는 예제가 많이 보이는데, 프론트엔드에선 잘 사용하지 않기에 예제를 생각하기 어려웠다.
+상위 객체와 하위 객체를 치환해도 문제가 없어야 한다.
 
-부모 자식 hook? ..  
-동일한 상태를 갖는 부모 자식 component? ..
+```ts
+interface Post {
+  title: string;
+  author: string;
+  id: number;
+}
+
+interface Notice extends Post {}
+
+interface Deal extends Post {}
+```
+
+```tsx
+const postModify = ({ post }: { post: Post }) => {
+  const { editPost, deletePost } = usePost();
+
+  const edit = () => {
+    editPost(post);
+  };
+
+  const delete = () => {
+    deletePost(post)
+  }
+
+  return (
+    <div>
+      <button onClick={Edit}>Edit</button>
+      <button onClick={Delete}>Delete</button>
+    </div>
+  );
+};
+```
+
+이런 상황에서 Notice 나 Deal을 보내는 것에 관계없이 제대로 동작해야 한다.
 
 ## Interface Segregation Principle
 
@@ -205,3 +296,10 @@ const Login = () => {
 ## Dependency Inversion Principle
 
 작성 중 ..
+
+- 참고한 곳  
+  https://velog.io/@teo/Javascript%EC%97%90%EC%84%9C%EB%8F%84-SOLID-%EC%9B%90%EC%B9%99%EC%9D%B4-%ED%86%B5%ED%95%A0%EA%B9%8C#solid-%EC%9B%90%EC%B9%99%EC%9D%B4%EB%9E%80
+
+  https://kooku0.github.io/blog/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%97%90-solid-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0/#3-solid
+
+  https://fe-developers.kakaoent.com/2023/230330-frontend-solid/
