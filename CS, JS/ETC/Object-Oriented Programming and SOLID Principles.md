@@ -280,8 +280,8 @@ const postModify = ({ post }: { post: Post }) => {
 
   return (
     <div>
-      <button onClick={Edit}>Edit</button>
-      <button onClick={Delete}>Delete</button>
+      <button onClick={edit}>Edit</button>
+      <button onClick={delete}>Delete</button>
     </div>
   );
 };
