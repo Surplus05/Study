@@ -291,11 +291,101 @@ const postModify = ({ post }: { post: Post }) => {
 
 ## Interface Segregation Principle
 
-작성 중 ..
+사용하지 않는 인터페이스에 의존하지 마라.  
+
+```ts
+interface Post {
+  view();
+  edit();
+  delete();
+}
+
+class Member implements Post {
+  view() {
+
+  }
+
+  edit() {
+
+  }
+
+  delete() {
+
+  }
+}
+
+class NonMember implements Post {
+  view() {
+
+  }
+
+  edit() {
+    throw new Error('not supported.');
+  }
+
+  delete() {
+    throw new Error('not supported.');
+  }
+}
+```
+
+
 
 ## Dependency Inversion Principle
 
-작성 중 ..
+고수준 모듈이 저수준 모듈에 의존하면 안된다.  
+
+구현보다는 추상화에 의존해라.  
+
+구현에 의존하는 경우 변경사항이 생긴다면 번거롭다.  
+
+공통적인 속성과 행위로 추상화해, 그 추상화된 인터페이스에 의존해라.  
+
+```ts
+class Google {
+    login() {
+        return "Google";
+    }
+}
+
+class LoginService {
+  this.google = new Google();
+
+  loginRequest() {
+    this.google.login();
+  }
+}
+```
+
+Google의 lgoin에 의존하고 있다.  
+
+```ts
+class Google {
+    login() {
+        return "Google";
+    }
+}
+
+class Apple {
+  login() {
+    return "Apple";
+}
+
+class LoginService {  
+  constructor(loginMethod) {
+    this.loginMethod = loginMethod;
+  }
+
+  loginRequest() {
+    loginMethod.login();
+  }
+}
+
+const login = new LoginService(new Apple())
+login.loginRequest();
+```
+
+이렇게, 구현(this.google.login) 말고, 인터페이스(loginMethod.login)에 의존하자.
 
 - 참고한 곳  
   https://velog.io/@teo/Javascript%EC%97%90%EC%84%9C%EB%8F%84-SOLID-%EC%9B%90%EC%B9%99%EC%9D%B4-%ED%86%B5%ED%95%A0%EA%B9%8C#solid-%EC%9B%90%EC%B9%99%EC%9D%B4%EB%9E%80
