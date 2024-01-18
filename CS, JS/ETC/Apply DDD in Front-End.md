@@ -31,4 +31,7 @@ Boundaries, Context Mapping, Ubiquitous Language 등을 통해 귀에 박히도�
 다행히 Atomic Design Pattern 을 사용중이었고 계층으로 이미 나누어져 있었기에, Domain별 구분하기가 용이했다.  
 또한 이미 용어 정립이 되어있었기에 유비쿼터스 언어 정의단계가 불필요했다.  
 
+Hexagonal 구조에서, UI와 Adapter의 경우 프레임워크(라이브러리)에 해당하고고 Domain, use Cases, infrastructure 부분은 프레임워크(라이브러리)에 독립적이라고 했다.  
+FECONF에서 본 DDD 처럼 Hexagonal로 분리하고 다시 도메인으로 구분하는 경우 지금 상황에서는 오히려 더 복잡해 질 것 같아 Domain 별 큰 범주에서 구분하고, 로직 부분은 별도의 폴더로 분리하도록 했다.  
+
 ... 진행 중
