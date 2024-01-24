@@ -91,6 +91,8 @@ root 에서 공통 설정을 위한 설정을 해 준다.
   common 이라는 폴더를 만들고, yarn init으로 초기 설정을 해 준다.
   공유하길 원하는 것들을 export 해주고, 사용할 모노레포에서 dependencies 에 common의 name을 추가해주면 사용이 가능하다.  
 
+세세하게 해준게 더 많지만, 굵직하게 이정도만 해주면 쉽게 구축이 완료된다.
+
 * 참고  
   https://d2.naver.com/helloworld/7553804  
   https://techblog.woowahan.com/7976/  
