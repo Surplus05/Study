@@ -49,4 +49,23 @@ domain layer는 각각의 도메인은 비즈니스에서 사용되는 entity, v
 
 FECONF에서 본 DDD 처럼 Hexagonal로 분리하고 다시 도메인으로 구분하는 경우 지금 상황에서는 오히려 더 복잡해 질 것 같아 Domain 별 큰 범주에서 구분하고, 로직 부분은 별도의 폴더로 분리하도록 했다.  
 
-... 진행 중
+도메인을 직접적으로 적기는 좀 그렇고, 구조는 다음과 같이 구성했다.  
+
+```
+ROOT
+└─ src
+   ├─ core
+   │  ├─ hook
+   │  ├─ store
+   │  ├─ util
+   │  └─ api
+   │  └─ page
+   └─ domain
+      ├─ ...
+      ├─ ...
+      └─ common
+```
+
+프로젝트의 bounded context(domain)가 사실상 page 단위로 명확히 구분되어 있으므로 page에서는 route 만 담당하면 될 것으로 예상된다.  
+
+한마디 : 영상을 봐도 확 와닿지가 않는듯.
