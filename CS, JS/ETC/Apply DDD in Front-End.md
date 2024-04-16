@@ -68,4 +68,6 @@ ROOT
 
 프로젝트의 bounded context(domain)가 사실상 page 단위로 명확히 구분되어 있으므로 page에서는 route 만 담당하면 될 것으로 예상된다.  
 
-한마디 : 영상을 봐도 확 와닿지가 않는듯.
+기존 Atomic Design Pattern 으로 구성된 프로젝트를 도메인별 분리만 했다.  
+구조가 깔끔해지긴 했으나..  
+DDD의 이론적인 내용들이 잘 와닿지는 않는 듯.  
